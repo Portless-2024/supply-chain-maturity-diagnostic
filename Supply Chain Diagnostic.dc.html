@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="_ds/portless-design-system-04723b20-2d22-4fda-a7c7-63ccfb357c5c/colors_and_type.css">
+<link rel="stylesheet" href="_ds/portless-design-system-04723b20-2d22-4fda-a7c7-63ccfb357c5c/styles.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  a { color: #1E40EF; }
+  a:hover { color: #0822A0; }
+  @keyframes scFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .sc-anim { animation: scFadeUp 360ms cubic-bezier(0.22,1,0.36,1) both; }
+  @keyframes scMarkerSweep { 0% { left: 12.5%; } 100% { left: 87.5%; } }
+  .sc-marker { animation: scMarkerSweep 3800ms cubic-bezier(0.45,0,0.55,1) infinite alternate both; }
+  @keyframes scPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(30,64,239,0.28); } 50% { box-shadow: 0 0 0 7px rgba(30,64,239,0); } }
+  input::placeholder { color: #8D95AD; }
+  :root { --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace; }
+</style>
+</helmet>
+<template id="__bundler_thumbnail" data-bg-color="#8FA7F8">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#8FA7F8"/>
+    <path d="M470 300 L740 300 L620 560 Z" fill="#2050F2"/>
+    <path d="M470 300 L620 445 L560 445 Z" fill="#0E1117"/>
+    <circle cx="600" cy="620" r="10" fill="#0E1117"/>
+  </svg>
+</template>
+<div style="min-height:100vh;background:linear-gradient(180deg,#FFFFFF 0%,#FFFFFF 8%,#8FA7F8 48%,#8FA7F8 66%,#FFFFFF 88%,#FFFFFF 100%);font-family:'Inter Tight',sans-serif;padding:28px 20px 96px;display:flex;flex-direction:column;align-items:center;">
+
+  <div style="width:100%;max-width:960px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+    <img src="assets/portless-logo-new.png" alt="Portless" style="height:26px;width:auto;display:block;" />
+  </div>
+
+  <!-- ===================== INTRO ===================== -->
+  <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+    <div class="sc-anim" style="width:100%;max-width:1000px;margin-top:24px;">
+
+      <!-- HERO -->
+      <div style="display:flex;gap:56px;align-items:center;flex-wrap:wrap;padding:32px 0 8px;">
+        <div style="flex:1;min-width:330px;">
+          <div style="display:inline-flex;align-items:center;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;border-radius:0;padding:7px 12px;background:transparent;white-space:nowrap;margin-bottom:24px;">Supply Chain Maturity Diagnostic</div>
+          <h1 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;letter-spacing:-0.015em;font-size:52px;line-height:1.02;color:#0B1233;margin:0 0 18px;text-wrap:balance;">How advanced is your supply chain?</h1>
+          <p style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:19px;line-height:1.6;color:#596274;max-width:460px;margin:0 0 22px;">Answer ten quick questions about how you move inventory and capital, and get your grade, from Legacy to Modern, against the industry.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;">
+            <button type="button" onClick="{{ start }}" style="display:inline-flex;align-items:center;gap:12px;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;color:#fff;background:linear-gradient(180deg,#8FA7F8 0%,#2050F2 100%);border:none;border-radius:10px;cursor:pointer;box-shadow:0 10px 26px rgba(32,80,242,0.28);transition:filter .15s;font-size:18px;padding:15px 26px;" style-hover="filter:brightness(1.06)">Start the diagnostic<span style="font-size:20px;line-height:1;">&#8594;</span></button>
+          </div>
+        </div>
+
+        <!-- animated meter -->
+        <div style="flex:1;min-width:320px;">
+          <div style="background:#F3F0EA;border:1px solid #3E3B38;border-radius:12px;box-shadow:0 18px 48px rgba(43,38,28,0.10);overflow:hidden;">
+            <div style="background:#fff;border-bottom:1px solid #E3DDD1;padding:26px 34px;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:16px;letter-spacing:0.01em;color:#3E3B38;">Supply chain maturity scale</div>
+            <div style="padding:76px 34px 44px;">
+            <div style="position:relative;">
+              <div class="sc-marker" style="position:absolute;top:14px;left:12.5%;z-index:3;">
+                <div class="sc-marker-bubble" style="position:absolute;bottom:22px;left:0;transform:translate(-50%,0);white-space:nowrap;background:#2050F2;color:#fff;font-family:var(--font-mono);font-size:12px;letter-spacing:0.06em;padding:7px 11px;border-radius:3px;">YOUR BRAND</div>
+                <div style="position:absolute;top:-10px;left:-10px;width:20px;height:20px;border-radius:99px;background:#fff;border:3px solid #2050F2;box-shadow:0 0 0 4px rgba(32,80,242,0.14);animation:scPulse 2200ms ease-out infinite;"></div>
+              </div>
+              <div style="position:absolute;top:13px;left:12.5%;right:12.5%;height:1.5px;background:repeating-linear-gradient(90deg,#3E3B38 0 4px,transparent 4px 7px);"></div>
+              <div style="position:relative;display:flex;justify-content:space-between;">
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:16px;">
+                  <div style="width:28px;height:28px;border-radius:99px;background:#A9BEF8;display:flex;align-items:center;justify-content:center;"><div style="width:15px;height:15px;border-radius:99px;background:#2050F2;"></div></div>
+                  <span style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:14px;color:#3E3B38;">Legacy</span>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:16px;">
+                  <div style="width:28px;height:28px;border-radius:99px;background:#A9BEF8;display:flex;align-items:center;justify-content:center;"><div style="width:15px;height:15px;border-radius:99px;background:#2050F2;"></div></div>
+                  <span style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:14px;color:#3E3B38;">Growing</span>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:16px;">
+                  <div style="width:28px;height:28px;border-radius:99px;background:#A9BEF8;display:flex;align-items:center;justify-content:center;"><div style="width:15px;height:15px;border-radius:99px;background:#2050F2;"></div></div>
+                  <span style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:14px;color:#3E3B38;">Optimized</span>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:16px;">
+                  <div style="width:28px;height:28px;border-radius:99px;background:#A9BEF8;display:flex;align-items:center;justify-content:center;"><div style="width:15px;height:15px;border-radius:99px;background:#2050F2;"></div></div>
+                  <span style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:14px;color:#3E3B38;">Modern</span>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHY IT MATTERS -->
+      <div style="margin-top:76px;">
+        <div style="display:inline-flex;align-items:center;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;border-radius:0;padding:6px 10px;background:transparent;margin-bottom:18px;">Why it matters</div>
+        <h2 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;letter-spacing:-0.012em;font-size:38px;line-height:1.08;color:#0B1233;margin:0 0 12px;max-width:640px;text-wrap:balance;">Your supply chain sets your growth ceiling</h2>
+        <p style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:18px;line-height:1.6;color:#596274;max-width:600px;margin:0 0 34px;">The way you move inventory and capital decides how fast you can grow, how much cash you can deploy, and how far you can reach. The numbers make the case.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border:1px solid #3E3B38;border-radius:10px;overflow:hidden;">
+          <div style="display:flex;flex-direction:column;padding:28px 26px;border-right:1px solid #3E3B38;">
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;letter-spacing:-0.02em;font-size:46px;color:#2050F2;line-height:1;">$1M</div>
+            <div style="margin-top:34px;">
+              <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#596274;min-height:78px;">of working capital sits idle for every 30 days of inventory a $20M brand carries.</div>
+              <div style="margin-top:14px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.04em;"><a href="https://wayflyer.com" target="_blank" rel="noopener" style="color:#8D95AD;text-decoration:underline;text-underline-offset:2px;" style-hover="color:#2050F2;">Wayflyer · APQC, 2026</a></div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;padding:28px 26px;border-right:1px solid #3E3B38;">
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;letter-spacing:-0.02em;font-size:46px;color:#2050F2;line-height:1;">59%</div>
+            <div style="margin-top:34px;">
+              <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#596274;min-height:78px;">of global shoppers now buy from retailers outside their home country.</div>
+              <div style="margin-top:14px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.04em;"><a href="https://capitaloneshopping.com/research" target="_blank" rel="noopener" style="color:#8D95AD;text-decoration:underline;text-underline-offset:2px;" style-hover="color:#2050F2;">Capital One Shopping, 2025</a></div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;padding:28px 26px;">
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;letter-spacing:-0.02em;font-size:46px;color:#2050F2;line-height:1;">$1.7T</div>
+            <div style="margin-top:34px;">
+              <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#596274;min-height:78px;">lost to stockouts and overstock globally in 2024, roughly 6.5% of retail sales.</div>
+              <div style="margin-top:14px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.04em;"><a href="https://www.ihlgroup.com" target="_blank" rel="noopener" style="color:#8D95AD;text-decoration:underline;text-underline-offset:2px;" style-hover="color:#2050F2;">IHL Group, 2025</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOW IT WORKS -->
+      <div style="margin-top:76px;">
+        <div style="display:inline-flex;align-items:center;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;border-radius:0;padding:6px 10px;background:transparent;margin-bottom:18px;">How it works</div>
+        <h2 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;letter-spacing:-0.012em;font-size:38px;line-height:1.08;color:#0B1233;margin:0 0 34px;">Get your grade in two minutes</h2>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+          <div style="background:#fff;border:1px solid #3E3B38;border-radius:10px;padding:24px 22px;box-shadow:0 2px 8px rgba(13,31,95,0.05);">
+            <div style="width:34px;height:34px;border-radius:0;border:1px solid #3E3B38;background:#2050F2;color:#fff;font-family:var(--font-mono);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">1</div>
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-size:18px;font-weight:500;color:#0B1233;margin-bottom:6px;">Answer 10 questions</div>
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:15px;line-height:1.6;color:#596274;">About how you move inventory and capital.</div>
+          </div>
+          <div style="background:#fff;border:1px solid #3E3B38;border-radius:10px;padding:24px 22px;box-shadow:0 2px 8px rgba(13,31,95,0.05);">
+            <div style="width:34px;height:34px;border-radius:0;border:1px solid #3E3B38;background:#2050F2;color:#fff;font-family:var(--font-mono);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">2</div>
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-size:18px;font-weight:500;color:#0B1233;margin-bottom:6px;">See your grade</div>
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:15px;line-height:1.6;color:#596274;">Legacy to Modern, scored live on the page as you go.</div>
+          </div>
+          <div style="background:#fff;border:1px solid #3E3B38;border-radius:10px;padding:24px 22px;box-shadow:0 2px 8px rgba(13,31,95,0.05);">
+            <div style="width:34px;height:34px;border-radius:0;border:1px solid #3E3B38;background:#2050F2;color:#fff;font-family:var(--font-mono);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">3</div>
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-size:18px;font-weight:500;color:#0B1233;margin-bottom:6px;">Unlock the breakdown</div>
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:15px;line-height:1.6;color:#596274;">Your score on every dimension, and how you compare to your category.</div>
+          </div>
+          <div style="background:#fff;border:1px solid #3E3B38;border-radius:10px;padding:24px 22px;box-shadow:0 2px 8px rgba(13,31,95,0.05);">
+            <div style="width:34px;height:34px;border-radius:0;border:1px solid #3E3B38;background:#2050F2;color:#fff;font-family:var(--font-mono);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">4</div>
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-size:18px;font-weight:500;color:#0B1233;margin-bottom:6px;">Get your next moves</div>
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:15px;line-height:1.6;color:#596274;">The three highest-impact changes for where you landed.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLOSER -->
+      <div style="margin-top:72px;text-align:center;padding-bottom:8px;">
+        <button type="button" onClick="{{ start }}" style="display:inline-flex;align-items:center;gap:12px;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;color:#fff;background:linear-gradient(180deg,#8FA7F8 0%,#2050F2 100%);border:none;border-radius:10px;cursor:pointer;box-shadow:0 10px 26px rgba(32,80,242,0.28);transition:filter .15s;font-size:18px;padding:15px 26px;" style-hover="filter:brightness(1.06)">Get your grade<span style="font-size:20px;line-height:1;">&#8594;</span></button>
+      </div>
+
+    </div>
+  </sc-if>
+
+  <!-- ===================== QUIZ ===================== -->
+  <sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%;max-width:680px;margin-top:36px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ back }}" style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5E6A9B;background:none;border:none;cursor:pointer;padding:6px 0;display:inline-flex;align-items:center;gap:6px;">&larr; Back</button>
+        </sc-if>
+        <div style="flex:1"></div>
+        <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:#5E6A9B;">{{ qNumber }} / {{ qTotal }}</div>
+      </div>
+      <div style="height:4px;border-radius:99px;background:#D8DDE9;overflow:hidden;margin-bottom:32px;">
+        <div style="height:100%;background:#1E40EF;border-radius:99px;transition:width .35s cubic-bezier(0.22,1,0.36,1);width:{{ progressPct }}%;"></div>
+      </div>
+
+      <div key="{{ qKey }}" class="sc-anim" style="background:#fff;border:1px solid #3E3B38;border-radius:12px;box-shadow:0 8px 24px rgba(13,31,95,0.06);padding:36px 34px 34px;">
+        <div style="display:inline-flex;align-items:center;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;border-radius:0;padding:6px 10px;background:transparent;margin-bottom:20px;">{{ qTag }}</div>
+        <h2 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;letter-spacing:-0.01em;font-size:32px;line-height:1.16;color:#0B1233;margin:0 0 8px;text-wrap:balance;">{{ qStem }}</h2>
+        <sc-if value="{{ qHasNote }}" hint-placeholder-val="{{ false }}">
+          <p style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#596274;margin:0 0 26px;">{{ qNote }}</p>
+        </sc-if>
+        <sc-if value="{{ qNoNote }}" hint-placeholder-val="{{ true }}">
+          <div style="height:26px;"></div>
+        </sc-if>
+
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <sc-for list="{{ options }}" as="opt" hint-placeholder-count="4">
+            <button type="button" onClick="{{ opt.pick }}" style="{{ opt.style }}">
+              <span style="{{ opt.letterStyle }}">{{ opt.letter }}</span>
+              <span style="flex:1;">{{ opt.label }}</span>
+              <span style="{{ opt.checkStyle }}">&#10003;</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ===================== RESULT ===================== -->
+  <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%;max-width:900px;margin-top:32px;">
+
+      <div class="sc-anim" style="background:#fff;border:1px solid #3E3B38;border-radius:12px;box-shadow:0 8px 24px rgba(13,31,95,0.06);overflow:hidden;">
+        <div style="height:6px;background:{{ gradeColor }};"></div>
+        <div style="padding:42px 44px 40px;">
+          <div style="display:inline-flex;align-items:center;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;border-radius:0;padding:6px 10px;background:transparent;margin-bottom:22px;">Your supply chain grade</div>
+          <div style="display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:30px;">
+            <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;letter-spacing:-0.025em;font-size:72px;line-height:0.9;color:{{ gradeColor }};">{{ gradeName }}</div>
+            <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;border:1px solid #3E3B38;border-radius:999px;padding:7px 14px;color:#3E3B38;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M9 12h6"></path><path d="M9 16h4"></path></svg><span style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:14px;color:#3E3B38;">{{ score }} / 24 points</span></div>
+          </div>
+
+          <div style="display:flex;gap:6px;margin-bottom:34px;">
+            <sc-for list="{{ meter }}" as="seg" hint-placeholder-count="4">
+              <div style="{{ seg.trackStyle }}">
+                <div style="{{ seg.labelStyle }}">{{ seg.name }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <h2 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;letter-spacing:-0.01em;font-size:30px;line-height:1.14;color:#0B1233;margin:0 0 16px;text-wrap:balance;">{{ gradeHeadline }}</h2>
+          <p style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:18px;line-height:1.65;color:#596274;margin:0;max-width:640px;">{{ gradeDiagnosis }}</p>
+        </div>
+      </div>
+
+      <!-- GATE -->
+      <sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ true }}">
+        <div class="sc-anim" style="margin-top:20px;background:linear-gradient(180deg,#3E3B38 0%,#0E1117 100%);border-radius:12px;padding:38px 40px;color:#fff;position:relative;overflow:hidden;">
+          <div style="display:inline-flex;align-items:center;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#fff;border:1px solid #fff;border-radius:0;padding:6px 10px;background:transparent;margin-bottom:18px;">Unlock your full breakdown</div>
+          <h3 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;font-size:27px;letter-spacing:-0.01em;color:#fff;margin:0 0 10px;">See where you scored and how you compare</h3>
+          <p style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#E6E7EB;margin:0 0 24px;max-width:540px;">Your personalized dimension breakdown, how you compare to brands in your category, and the three moves that matter most for your grade.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;max-width:560px;">
+            <input id="scd-email" type="email" placeholder="you@yourbrand.com" value="{{ email }}" onInput="{{ onEmail }}" style="flex:1;min-width:240px;font-family:'Inter Tight',-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;color:#0B1233;background:#fff;border:1px solid transparent;border-radius:10px;padding:15px 22px;outline:none;" />
+            <button type="button" onClick="{{ unlock }}" style="display:inline-flex;align-items:center;gap:12px;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;color:#fff;background:linear-gradient(180deg,#8FA7F8 0%,#2050F2 100%);border:none;border-radius:10px;cursor:pointer;box-shadow:0 10px 26px rgba(32,80,242,0.28);transition:filter .15s;font-size:16px;padding:14px 24px;white-space:nowrap;" style-hover="filter:brightness(1.06)">Show my breakdown<span style="font-size:20px;line-height:1;">&#8594;</span></button>
+          </div>
+          <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:12px;font-size:14px;color:#FFB897;font-family:var(--font-mono);">{{ err }}</div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- REVEAL -->
+      <sc-if value="{{ unlocked }}" hint-placeholder-val="{{ false }}">
+        <div class="sc-anim">
+          <!-- dimension breakdown -->
+          <div style="margin-top:20px;background:#fff;border:1px solid #3E3B38;border-radius:12px;box-shadow:0 8px 24px rgba(13,31,95,0.06);padding:36px 40px;">
+            <div style="display:inline-flex;align-items:center;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;border-radius:0;padding:6px 10px;background:transparent;margin-bottom:18px;">Your breakdown</div>
+            <h3 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;font-size:27px;letter-spacing:-0.01em;color:#0B1233;margin:0 0 26px;">Where you scored, dimension by dimension</h3>
+            <div style="display:flex;flex-direction:column;gap:18px;">
+              <sc-for list="{{ dims }}" as="d" hint-placeholder-count="8">
+                <div style="display:grid;grid-template-columns:220px 1fr auto;gap:16px;align-items:center;">
+                  <div style="font-size:17px;font-weight:600;color:#0B1233;">{{ d.label }}</div>
+                  <div style="height:10px;border-radius:99px;background:#EAEEF6;overflow:hidden;">
+                    <div style="{{ d.barStyle }}"></div>
+                  </div>
+                  <div style="font-family:var(--font-mono);font-size:13px;color:#5E6A9B;width:34px;text-align:right;">{{ d.score }}/3</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- benchmark -->
+          <div style="margin-top:20px;background:#fff;border:1px solid #3E3B38;border-radius:12px;box-shadow:0 8px 24px rgba(13,31,95,0.06);padding:36px 40px;">
+            <div style="display:inline-flex;align-items:center;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;border-radius:0;padding:6px 10px;background:transparent;margin-bottom:18px;">How you compare</div>
+            <h3 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;font-size:27px;letter-spacing:-0.01em;color:#0B1233;margin:0 0 6px;">Days of inventory: {{ benchCategory }}</h3>
+            <p style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#596274;margin:0 0 26px;max-width:600px;">{{ benchIntro }}</p>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <sc-for list="{{ benchBars }}" as="b" hint-placeholder-count="3">
+                <div style="display:grid;grid-template-columns:150px 1fr auto;gap:16px;align-items:center;">
+                  <div style="font-size:15px;font-weight:600;color:{{ b.labelColor }};">{{ b.label }}</div>
+                  <div style="height:14px;border-radius:99px;background:#EAEEF6;overflow:hidden;">
+                    <div style="{{ b.barStyle }}"></div>
+                  </div>
+                  <div style="font-family:var(--font-mono);font-size:13px;color:#5E6A9B;width:78px;text-align:right;">{{ b.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:22px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.04em;color:#8D95AD;">Source: <a href="https://www.eightx.co" target="_blank" rel="noopener" style="color:#8D95AD;text-decoration:underline;text-underline-offset:2px;" style-hover="color:#2050F2;">Eightx</a>;&nbsp; <a href="https://attnagency.com" target="_blank" rel="noopener" style="color:#8D95AD;text-decoration:underline;text-underline-offset:2px;" style-hover="color:#2050F2;">ATTN Agency fractional-CFO benchmarks, 2026</a></div>
+          </div>
+
+          <!-- next steps -->
+          <div style="margin-top:20px;background:#fff;border:1px solid #3E3B38;border-radius:12px;box-shadow:0 8px 24px rgba(13,31,95,0.06);padding:36px 40px 18px;">
+            <div style="display:inline-flex;align-items:center;font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;border-radius:0;padding:6px 10px;background:transparent;margin-bottom:18px;">Your next moves</div>
+            <h3 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;font-size:27px;letter-spacing:-0.01em;color:#0B1233;margin:0 0 26px;">Three things to act on now</h3>
+            <div style="display:flex;flex-direction:column;">
+              <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+                <div style="display:flex;gap:18px;align-items:flex-start;padding:22px 40px;margin:0 -40px;border-top:1px solid #E4E4F0;">
+                  <div style="flex:none;width:34px;height:34px;border-radius:0;border:1px solid #3E3B38;background:#2050F2;color:#fff;font-family:var(--font-mono);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;">{{ s.n }}</div>
+                  <div>
+                    <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-size:19px;font-weight:500;color:#0B1233;margin-bottom:4px;">{{ s.title }}</div>
+                    <div style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#596274;">{{ s.body }} {{ s.first }}</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div style="margin-top:20px;background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:40px;text-align:center;box-shadow:0 8px 24px rgba(13,31,95,0.06);">
+            <h3 style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;font-size:26px;letter-spacing:-0.02em;color:#0B1233;margin:0 0 10px;">Want to close the gap?</h3>
+            <p style="font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#596274;margin:0 auto 24px;max-width:480px;">Book a 15-minute supply chain teardown. We'll walk through your result together and figure out where to start.</p>
+            <a href="#" style="display:inline-flex;align-items:center;gap:12px;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;color:#fff;background:linear-gradient(180deg,#8FA7F8 0%,#2050F2 100%);border:none;border-radius:10px;cursor:pointer;box-shadow:0 10px 26px rgba(32,80,242,0.28);transition:filter .15s;font-size:17px;padding:14px 26px;">Book your 15-minute teardown<span style="font-size:20px;line-height:1;">&#8594;</span></a>
+          </div>
+
+          <div style="margin-top:24px;text-align:center;">
+            <button type="button" onClick="{{ restart }}" style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5E6A9B;background:none;border:none;cursor:pointer;">&#8635; Retake the diagnostic</button>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:820},&quot;autoAdvance&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;shuffleAnswers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+
+    const scored = [
+      { id: 'q1', tag: 'Inventory lead time', label: 'Inventory lead time',
+        stem: 'When you place a PO with your manufacturer, how long until that stock is sellable?',
+        options: [
+          { label: 'More than 90 days', points: 0 },
+          { label: '60 to 90 days', points: 1 },
+          { label: '30 to 60 days', points: 2 },
+          { label: 'Under 30 days', points: 3 },
+        ] },
+      { id: 'q2', tag: 'Reorder frequency', label: 'Reorder frequency',
+        stem: 'How often do you reorder your hero SKUs?',
+        options: [
+          { label: 'One or two times a year', points: 0 },
+          { label: 'A few times a year', points: 1 },
+          { label: 'Roughly once a month', points: 2 },
+          { label: 'Every few weeks or more often', points: 3 },
+        ] },
+      { id: 'q3', tag: 'Cash in inventory', label: 'Cash in inventory',
+        stem: 'How much of your working capital is tied up in inventory at any given time?',
+        options: [
+          { label: 'More than 75%', points: 0 },
+          { label: 'About half to three-quarters', points: 1 },
+          { label: 'A quarter to half', points: 2 },
+          { label: 'Less than a quarter', points: 3 },
+        ] },
+      { id: 'q4', tag: 'Forecasting horizon', label: 'Forecasting horizon',
+        stem: 'How far ahead do you predict demand for your products?',
+        options: [
+          { label: 'Six months or more', points: 0 },
+          { label: 'Three to six months', points: 1 },
+          { label: 'One to three months', points: 2 },
+          { label: 'A few weeks at a time', points: 3 },
+        ] },
+      { id: 'q5', tag: 'International reach', label: 'International reach',
+        stem: 'How many countries do you fulfill orders to currently?',
+        options: [
+          { label: 'Domestic only', points: 0 },
+          { label: 'One or two countries', points: 1 },
+          { label: 'Three to ten countries', points: 2 },
+          { label: 'More than 10 countries', points: 3 },
+        ] },
+      { id: 'q6', tag: 'Cash conversion cycle', label: 'Cash conversion cycle',
+        stem: 'How long is your cash conversion cycle, the time between paying your supplier and getting paid by your customer?',
+        options: [
+          { label: 'More than 90 days', points: 0 },
+          { label: '60 to 90 days', points: 1 },
+          { label: '30 to 60 days', points: 2 },
+          { label: 'Under 30 days', points: 3 },
+        ] },
+      { id: 'q7', tag: 'Fulfillment model', label: 'Fulfillment model',
+        stem: 'Where is your inventory stored before it ships to a customer?',
+        options: [
+          { label: 'Bulk in domestic 3PL warehouses', points: 0 },
+          { label: 'Mostly domestic warehouses', points: 1 },
+          { label: 'A mix of warehouse and direct', points: 2 },
+          { label: 'It ships direct from the point of origin', points: 3 },
+        ] },
+      { id: 'q8', tag: 'Stockouts and dead stock', label: 'Stockouts & dead stock',
+        stem: 'How often do you wrestle with stockouts or dead stock?',
+        options: [
+          { label: 'Frequently', points: 0 },
+          { label: 'Fairly often', points: 1 },
+          { label: 'Occasionally', points: 2 },
+          { label: 'Rarely', points: 3 },
+        ] },
+    ];
+
+    const profiling = [
+      { id: 'p1', profiling: true, tag: 'About your brand',
+        stem: 'What does your brand do in annual revenue?',
+        note: 'Used to compare you with brands your size.',
+        options: [
+          { label: 'Under $1M' }, { label: '$1M to $10M' },
+          { label: '$10M to $50M' }, { label: 'Over $50M' },
+        ] },
+      { id: 'p2', profiling: true, tag: 'About your brand',
+        stem: 'And what do you sell?',
+        note: 'Used to compare you against similar brands.',
+        options: [
+          { label: 'Apparel & accessories' }, { label: 'Beauty & personal care' },
+          { label: 'Health & supplements' }, { label: 'Home & lifestyle' },
+          { label: 'Food & beverage' }, { label: 'Electronics & gadgets' },
+          { label: 'Something else' },
+        ] },
+    ];
+
+    this.questions = scored.concat(profiling);
+
+    const doShuffle = (this.props.shuffleAnswers ?? true);
+    this.display = {};
+    this.questions.forEach(q => {
+      let opts = q.options.slice();
+      if (doShuffle && !q.profiling) {
+        for (let i = opts.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [opts[i], opts[j]] = [opts[j], opts[i]];
+        }
+      }
+      this.display[q.id] = opts;
+    });
+
+    this.GRADES = {
+      Legacy: {
+        color: '#FF5C28',
+        headline: 'Your supply chain is running on the legacy model',
+        diagnosis: "Long lead times, big bulk orders, and cash locked in stock are setting the ceiling on how fast you can grow. You're forecasting far out and absorbing the risk when you guess wrong. This is the model most brands start on, and the one that quietly caps revenue once you scale.",
+        steps: [
+          { title: 'Map your cash conversion cycle', body: 'See exactly how many days your money is trapped between paying suppliers and getting paid by customers.', first: 'Pull your average payables and receivables days from the last 90 days, then add your days of inventory on hand.' },
+          { title: 'Find your hero SKUs', body: 'Identify the products worth piloting on a faster, lower-inventory model first.', first: 'List the SKUs that drive ~80% of revenue and flag the ones that stock out or sit longest.' },
+          { title: 'Pressure-test one international market', body: 'Even one new market exposes how much the current model is holding back reach.', first: 'Pick the country already sending you the most traffic or requests and price out what it takes to serve it today.' },
+        ],
+      },
+      Growing: {
+        color: '#F5A623',
+        headline: "You're scaling, but the model is straining",
+        diagnosis: "Volume is growing faster than your supply chain can comfortably carry. The inventory-forward setup is starting to cost you in cash and speed, and international is more friction than it should be. You've outgrown the legacy model, and the question is what you move to next.",
+        steps: [
+          { title: 'Quantify the cash you could free', body: 'Model your current inventory holding cost against a leaner replenishment approach.', first: 'Total the value of inventory sitting in warehouses right now and multiply by your cost of capital.' },
+          { title: 'Shorten your reorder cycle', body: 'Smaller, more frequent batches cut both stockout risk and dead stock.', first: 'Take one hero SKU and cut its order quantity in half while doubling the order frequency for a quarter.' },
+          { title: 'Tighten your cash conversion cycle', body: 'Every day you shave off the gap between paying suppliers and getting paid is working capital back in your hands.', first: 'Renegotiate payment terms with your largest supplier, or move the slowest leg of transit off the critical path.' },
+        ],
+      },
+      Optimized: {
+        color: '#1CA6B0',
+        headline: "You're actively modernizing",
+        diagnosis: "You're already shrinking lead times, reordering smarter, and expanding internationally. You've moved past the bulk-and-hope model. The remaining gains are in how much inventory you still hold and how directly you can get product to the customer.",
+        steps: [
+          { title: 'Pilot direct fulfillment on a product line', body: 'Test shipping straight from origin for your fastest-moving SKUs.', first: 'Choose one high-velocity line and run direct fulfillment alongside your existing 3PL for 30 days to compare.' },
+          { title: 'Close the last cash gap', body: 'Target the working capital still tied up in safety stock.', first: 'Identify the safety stock you hold purely to cover long lead times, and model what a shorter cycle would release.' },
+          { title: 'Make global reach the default', body: 'Turn the markets you can technically reach into markets you actively sell to.', first: 'Turn on local pricing and tracking for your top two international markets instead of treating them as exceptions.' },
+        ],
+      },
+      Modern: {
+        color: '#14A75A',
+        headline: "You're running a modern supply chain",
+        diagnosis: 'Agile replenishment, minimal idle inventory, direct fulfillment, and global reach by default. Your capital is free to fund growth instead of sitting on shelves. You\u2019re operating the way the best brands are heading, and the focus now is protecting the edge as you scale.',
+        steps: [
+          { title: 'Stress-test for peak', body: 'Make sure the model holds through your highest-volume season without reverting to bulk.', first: 'Model your peak-week order volume against current capacity and find the first constraint that breaks.' },
+          { title: 'Expand the direct footprint', body: "Extend what's working to more SKUs and more markets.", first: 'Take the SKUs and markets already running direct and map the next tier ready to move over.' },
+          { title: 'Benchmark against the frontier', body: 'Compare your speed, cash cycle, and reach against where the model is going next.', first: 'Track your lead time, cash conversion cycle, and active markets quarter over quarter, not just once.' },
+        ],
+      },
+    };
+    this.meterOrder = ['Legacy', 'Growing', 'Optimized', 'Modern'];
+
+    this.CATS = {
+      'Apparel & accessories': { key: 'Apparel', t: [60, 120], b: [35, 50] },
+      'Beauty & personal care': { key: 'Beauty & personal care', t: [45, 90], b: [25, 40] },
+      'Health & supplements': { key: 'Health & supplements', t: [30, 60], b: [20, 35] },
+      'Home & lifestyle': { key: 'Home & lifestyle', t: [60, 120], b: [40, 60] },
+      'Food & beverage': { key: 'Food & beverage', t: [15, 30], b: [8, 15] },
+    };
+    this.DEFAULT_CAT = { key: 'Other', t: [110, 131], b: [45, 60] };
+
+    this.state = { screen: 'intro', qi: 0, answers: {}, unlocked: false, email: '', err: '' };
+    this.lastGrade = null;
+    this.lastScore = 0;
+  }
+
+  start = () => this.setState({ screen: 'quiz', qi: 0 });
+
+  back = () => { if (this.state.qi > 0) this.setState({ qi: this.state.qi - 1 }); };
+
+  pick(q, opt) {
+    const answers = Object.assign({}, this.state.answers);
+    answers[q.id] = q.profiling ? opt.label : opt.points;
+    this.setState({ answers });
+    const auto = (this.props.autoAdvance ?? true);
+    if (this._t) clearTimeout(this._t);
+    if (auto) this._t = setTimeout(() => this.advance(), 240);
+    else this.advance();
+  }
+
+  advance() {
+    const { qi } = this.state;
+    if (qi < this.questions.length - 1) this.setState({ qi: qi + 1 });
+    else this.finish();
+  }
+
+  finish() {
+    let s = 0;
+    this.questions.forEach(q => {
+      if (!q.profiling && typeof this.state.answers[q.id] === 'number') s += this.state.answers[q.id];
+    });
+    let g = 'Legacy';
+    if (s >= 20) g = 'Modern';
+    else if (s >= 14) g = 'Optimized';
+    else if (s >= 8) g = 'Growing';
+    this.lastScore = s;
+    this.lastGrade = g;
+    this.setState({ screen: 'result' });
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  onEmail = (e) => this.setState({ email: e.target.value });
+
+  getCookie(name) {
+    if (typeof document === 'undefined') return '';
+    const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+
+  unlock = () => {
+    const HS_PORTAL = 'YOUR_PORTAL_ID';
+    const HS_FORM = 'YOUR_FORM_GUID';
+    const v = (this.state.email || '').trim();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if (!ok) { this.setState({ err: 'Please enter a valid email.' }); return; }
+    this.setState({ err: '' });
+
+    const payload = {
+      fields: [
+        { name: 'email', value: v },
+        { name: 'supply_chain_grade', value: this.lastGrade },
+        { name: 'supply_chain_score', value: String(this.lastScore) },
+      ],
+      context: {
+        hutk: this.getCookie('hubspotutk'),
+        pageUri: (typeof window !== 'undefined') ? window.location.href : '',
+        pageName: (typeof document !== 'undefined') ? document.title : '',
+      },
+    };
+    try {
+      fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL + '/' + HS_FORM,
+        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(() => {});
+    } catch (e) { /* reveal regardless */ }
+
+    this.setState({ unlocked: true });
+  };
+
+  restart = () => this.setState({ screen: 'intro', qi: 0, answers: {}, unlocked: false, email: '', err: '' });
+
+  ptsToDays(p) { return ({ 0: 120, 1: 90, 2: 50, 3: 25 })[p] ?? 90; }
+
+  renderVals() {
+    const { screen, qi, answers } = this.state;
+    const isIntro = screen === 'intro';
+    const isQuiz = screen === 'quiz';
+    const isResult = screen === 'result';
+
+    const base = { isIntro, isQuiz, isResult, start: this.start, back: this.back, restart: this.restart };
+
+    if (isQuiz) {
+      const q = this.questions[qi];
+      const total = this.questions.length;
+      const sel = answers[q.id];
+      const opts = this.display[q.id].map((o, i) => {
+        const on = q.profiling ? (sel === o.label) : (sel !== undefined && sel === o.points);
+        return {
+          label: o.label,
+          letter: String.fromCharCode(65 + i),
+          pick: () => this.pick(q, o),
+          style: 'display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:17px 20px;border-radius:0;margin-top:-1px;cursor:pointer;font-family:\'Inter Tight\',-apple-system,BlinkMacSystemFont,sans-serif;font-size:19px;font-weight:500;transition:all .15s;position:relative;'
+            + (on
+              ? 'border:1.5px solid #1E40EF;background:#EEF2FF;color:#0822A0;z-index:2;'
+              : 'border:1px solid #D8DDE9;background:#fff;color:#0B1233;z-index:1;'),
+          letterStyle: 'flex:none;width:28px;height:28px;border-radius:0;border:1px solid #3E3B38;background:#2050F2;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:600;',
+          checkStyle: 'flex:none;font-size:15px;color:#1E40EF;transition:opacity .15s;opacity:' + (on ? '1' : '0') + ';',
+        };
+      });
+      return Object.assign(base, {
+        qKey: q.id,
+        qNumber: String(qi + 1).padStart(2, '0'),
+        qTotal: String(total).padStart(2, '0'),
+        progressPct: Math.round(((qi) / (total - 1)) * 100),
+        qTag: q.tag,
+        qStem: q.stem,
+        qNote: q.note || '',
+        qHasNote: !!q.note,
+        qNoNote: !q.note,
+        canBack: qi > 0,
+        options: opts,
+      });
+    }
+
+    if (isResult) {
+      const g = this.lastGrade || 'Legacy';
+      const gd = this.GRADES[g];
+      const score = this.lastScore;
+      const gi = this.meterOrder.indexOf(g);
+
+      const meter = this.meterOrder.map((name, i) => {
+        const active = i === gi;
+        const c = this.GRADES[name].color;
+        return {
+          name,
+          trackStyle: 'flex:1;height:auto;border-radius:8px;padding:10px 0 8px;text-align:center;transition:all .2s;'
+            + (active ? 'background:' + c + ';' : 'background:#F0ECE3;'),
+          labelStyle: 'font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;'
+            + (active ? 'color:#fff;' : 'color:#9A9384;'),
+        };
+      });
+
+      const dimQs = this.questions.filter(q => !q.profiling);
+      const dimColors = ['#FF5C28', '#F5A623', '#3ACCD6', '#22C770'];
+      const dims = dimQs.map(q => {
+        const sc = typeof answers[q.id] === 'number' ? answers[q.id] : 0;
+        return {
+          label: q.label,
+          score: sc,
+          barStyle: 'height:100%;border-radius:99px;transition:width .5s;width:' + Math.max(6, (sc / 3) * 100) + '%;background:' + dimColors[sc] + ';',
+        };
+      });
+
+      // benchmark
+      const catAns = answers['p2'];
+      const cat = this.CATS[catAns] || this.DEFAULT_CAT;
+      const q1 = typeof answers['q1'] === 'number' ? answers['q1'] : 1;
+      const q6 = typeof answers['q6'] === 'number' ? answers['q6'] : 1;
+      const yourDays = Math.round((this.ptsToDays(q1) + this.ptsToDays(q6)) / 2);
+      const axis = 140;
+      const pct = (d) => Math.max(4, Math.min(100, (d / axis) * 100));
+      const tMid = Math.round((cat.t[0] + cat.t[1]) / 2);
+      const bMid = Math.round((cat.b[0] + cat.b[1]) / 2);
+      const benchBars = [
+        { label: 'Your estimate', value: '~' + yourDays + ' days', labelColor: '#1E40EF',
+          barStyle: 'height:100%;border-radius:99px;width:' + pct(yourDays) + '%;background:#1E40EF;' },
+        { label: 'Typical', value: cat.t[0] + '\u2013' + cat.t[1] + ' days', labelColor: '#5E6A9B',
+          barStyle: 'height:100%;border-radius:99px;width:' + pct(tMid) + '%;background:#B9C0D2;' },
+        { label: 'Best-in-class', value: cat.b[0] + '\u2013' + cat.b[1] + ' days', labelColor: '#14A75A',
+          barStyle: 'height:100%;border-radius:99px;width:' + pct(bMid) + '%;background:#22C770;' },
+      ];
+      const benchIntro = 'Based on your lead time and cash conversion answers, you\u2019re carrying roughly ' + yourDays
+        + ' days of inventory. Here\u2019s how that stacks up against ' + cat.key.toLowerCase() + ' brands.';
+
+      const steps = gd.steps.map((s, i) => ({ n: String(i + 1), title: s.title, body: s.body, first: s.first }));
+      const emailedLine = this.state.email ? ('A copy is on its way to ' + this.state.email) : 'A copy has been emailed to you';
+
+      return Object.assign(base, {
+        gradeName: g,
+        gradeColor: gd.color,
+        gradeHeadline: gd.headline,
+        gradeDiagnosis: gd.diagnosis,
+        score,
+        meter,
+        gateOpen: !this.state.unlocked,
+        unlocked: this.state.unlocked,
+        email: this.state.email,
+        onEmail: this.onEmail,
+        unlock: this.unlock,
+        hasErr: !!this.state.err,
+        err: this.state.err,
+        dims,
+        benchCategory: cat.key,
+        benchIntro,
+        benchBars,
+        steps,
+      });
+    }
+
+    return base;
+  }
+}
+</script>
+</body>
+</html>

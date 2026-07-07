@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  :root { --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace; --sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif; }
+  a { color: #2050F2; }
+  a:hover { color: #0822A0; }
+</style>
+</helmet>
+<div style="min-height:100vh;background:#F7F6F2;font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;color:#0B1233;padding:56px 32px 120px;">
+  <div style="max-width:960px;margin:0 auto;">
+
+    <!-- HEADER -->
+    <div style="margin-bottom:16px;">
+      <img src="assets/portless-logo-new.png" alt="Portless" style="height:26px;width:auto;display:block;margin-bottom:28px;" />
+      <div style="display:inline-flex;align-items:center;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;padding:6px 10px;margin-bottom:20px;">Design kit</div>
+      <h1 style="font-family:var(--sans);font-weight:500;letter-spacing:-0.015em;font-size:44px;line-height:1.04;margin:0 0 12px;">Supply Chain Diagnostic — style system</h1>
+      <p style="font-family:var(--sans);font-weight:400;font-size:18px;line-height:1.6;color:#596274;max-width:620px;margin:0;">Every visual decision from the diagnostic, in one place. Copy the values into new projects to keep the look consistent.</p>
+    </div>
+
+    <!-- ============ TYPOGRAPHY ============ -->
+    <div style="margin-top:64px;padding-top:28px;border-top:1px solid #E3DDD1;">
+      <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#9A9384;margin-bottom:22px;">01 · Typography</div>
+
+      <div style="display:flex;flex-direction:column;gap:22px;">
+        <div style="background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:28px 30px;">
+          <div style="font-family:var(--sans);font-weight:500;font-size:40px;letter-spacing:-0.015em;margin-bottom:8px;">Geist Medium — headings</div>
+          <div style="font-family:var(--mono);font-size:13px;color:#596274;">font-family: 'Geist' · weight 500 (headlines) / 600 (small labels) · letter-spacing -0.01 to -0.015em · color #0B1233</div>
+        </div>
+        <div style="background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:28px 30px;">
+          <div style="font-family:var(--sans);font-weight:400;font-size:20px;line-height:1.6;color:#596274;margin-bottom:10px;">Geist Regular — body copy. Used for all paragraphs and descriptions at 15–19px, line-height 1.6.</div>
+          <div style="font-family:var(--mono);font-size:13px;color:#596274;">font-family: 'Geist' · weight 400 · color #596274</div>
+        </div>
+        <div style="background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:28px 30px;">
+          <div style="font-family:var(--mono);font-weight:500;font-size:20px;letter-spacing:0.02em;color:#3E3B38;margin-bottom:10px;">GEIST MONO — EYEBROWS, LABELS, SOURCES</div>
+          <div style="font-family:var(--mono);font-size:13px;color:#596274;">font-family: 'Geist Mono' · weight 500 · color #3E3B38 · used for eyebrow pills, tier labels, data figures, source links</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ COLOR ============ -->
+    <div style="margin-top:64px;padding-top:28px;border-top:1px solid #E3DDD1;">
+      <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#9A9384;margin-bottom:22px;">02 · Color</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;">
+        <sc-for list="{{ swatches }}" as="s" hint-placeholder-count="9">
+          <div style="background:#fff;border:1px solid #E3DDD1;border-radius:12px;overflow:hidden;">
+            <div style="height:84px;background:{{ s.hex }};border-bottom:1px solid rgba(0,0,0,0.06);"></div>
+            <div style="padding:12px 14px;">
+              <div style="font-family:var(--sans);font-weight:600;font-size:14px;color:#0B1233;">{{ s.name }}</div>
+              <div style="font-family:var(--mono);font-size:12px;color:#596274;margin-top:2px;">{{ s.hex }}</div>
+              <div style="font-family:var(--sans);font-size:12px;color:#9A9384;margin-top:6px;line-height:1.4;">{{ s.use }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ============ GRADIENTS ============ -->
+    <div style="margin-top:64px;padding-top:28px;border-top:1px solid #E3DDD1;">
+      <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#9A9384;margin-bottom:22px;">03 · Gradients</div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <sc-for list="{{ gradients }}" as="g" hint-placeholder-count="3">
+          <div style="border:1px solid #E3DDD1;border-radius:12px;overflow:hidden;">
+            <div style="height:96px;background:{{ g.css }};"></div>
+            <div style="background:#fff;padding:14px 18px;border-top:1px solid #E3DDD1;">
+              <div style="font-family:var(--sans);font-weight:600;font-size:14px;color:#0B1233;margin-bottom:3px;">{{ g.name }}</div>
+              <div style="font-family:var(--mono);font-size:12px;color:#596274;">{{ g.css }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ============ COMPONENTS ============ -->
+    <div style="margin-top:64px;padding-top:28px;border-top:1px solid #E3DDD1;">
+      <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#9A9384;margin-bottom:22px;">04 · Components</div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+
+        <!-- eyebrow pill -->
+        <div style="background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:26px 30px;">
+          <div style="display:inline-flex;align-items:center;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#3E3B38;border:1px solid #3E3B38;padding:6px 10px;margin-bottom:16px;white-space:nowrap;">Eyebrow pill</div>
+          <div style="font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#596274;">Square (radius 0) · 1px solid #3E3B38 · Geist Mono 500 · 12px · letter-spacing 0.02em · uppercase · transparent bg · white-space:nowrap</div>
+        </div>
+
+        <!-- number badge + score pill -->
+        <div style="background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:26px 30px;">
+          <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;">
+            <div style="width:34px;height:34px;border:1px solid #3E3B38;background:#2050F2;color:#fff;font-family:var(--mono);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;">1</div>
+            <div style="display:inline-flex;align-items:center;gap:8px;border:1px solid #3E3B38;border-radius:999px;padding:7px 14px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3E3B38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M9 12h6"></path><path d="M9 16h4"></path></svg>
+              <span style="font-family:var(--sans);font-weight:600;font-size:14px;color:#3E3B38;">14 / 24 points</span>
+            </div>
+          </div>
+          <div style="font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#596274;">Number badge: 34×34 square · #2050F2 fill · white numeral · 1px #3E3B38 border. &nbsp;Score pill: fully rounded · 1px #3E3B38 border · Geist 600 · optional line icon.</div>
+        </div>
+
+        <!-- buttons -->
+        <div style="background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:26px 30px;">
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:16px;">
+            <span style="display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-weight:400;color:#fff;background:linear-gradient(180deg,#8FA7F8 0%,#2050F2 100%);border-radius:10px;box-shadow:0 10px 26px rgba(32,80,242,0.28);font-size:17px;padding:14px 26px;">Primary CTA<span style="font-size:20px;line-height:1;">&#8594;</span></span>
+          </div>
+          <div style="font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#596274;">Gradient #8FA7F8 → #2050F2 (180deg) · radius 10px · Geist 400 · white text · trailing → arrow · shadow 0 10px 26px rgba(32,80,242,0.28)</div>
+        </div>
+
+        <!-- cards -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div style="background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:26px 30px;">
+            <div style="font-family:var(--sans);font-weight:600;font-size:16px;margin-bottom:8px;">White card</div>
+            <div style="font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#596274;">#fff · 1px #3E3B38 border · radius 12px · shadow 0 8px 24px rgba(13,31,95,0.06)</div>
+          </div>
+          <div style="background:#F3F0EA;border:1px solid #3E3B38;border-radius:12px;padding:26px 30px;">
+            <div style="font-family:var(--sans);font-weight:600;font-size:16px;margin-bottom:8px;">Cream card</div>
+            <div style="font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#6B6456;">#F3F0EA ground · 1px #3E3B38 border · white header band w/ #E3DDD1 divider for titled visuals</div>
+          </div>
+        </div>
+
+        <!-- flush option list -->
+        <div style="background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:26px 30px;">
+          <div style="font-family:var(--sans);font-weight:600;font-size:16px;margin-bottom:14px;">Flush option list</div>
+          <div style="display:flex;flex-direction:column;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:14px;padding:15px 18px;border:1px solid #D8DDE9;">
+              <span style="width:26px;height:26px;border:1px solid #3E3B38;background:#2050F2;color:#fff;font-family:var(--mono);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;">A</span>
+              <span style="font-family:var(--sans);font-size:17px;color:#0B1233;">Option one</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:15px 18px;border:1px solid #D8DDE9;margin-top:-1px;">
+              <span style="width:26px;height:26px;border:1px solid #3E3B38;background:#2050F2;color:#fff;font-family:var(--mono);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;">B</span>
+              <span style="font-family:var(--sans);font-size:17px;color:#0B1233;">Option two</span>
+            </div>
+          </div>
+          <div style="font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#596274;">gap 0 · square corners · margin-top:-1px to collapse shared borders · selected: 1.5px #2050F2 border + #EEF2FF fill · square letter badge</div>
+        </div>
+
+        <!-- dotted scale -->
+        <div style="background:#F3F0EA;border:1px solid #3E3B38;border-radius:12px;padding:44px 30px 30px;">
+          <div style="position:relative;margin-bottom:16px;">
+            <div style="position:absolute;top:13px;left:12.5%;right:12.5%;height:1.5px;background:repeating-linear-gradient(90deg,#3E3B38 0 4px,transparent 4px 7px);"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;">
+              <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="4">
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:14px;">
+                  <div style="width:28px;height:28px;border-radius:99px;background:#A9BEF8;display:flex;align-items:center;justify-content:center;"><div style="width:15px;height:15px;border-radius:99px;background:#2050F2;"></div></div>
+                  <span style="font-family:var(--sans);font-weight:600;font-size:13px;color:#3E3B38;">{{ t }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#6B6456;">Dashed baseline: repeating-linear-gradient 4px dash / 3px gap · 1.5px · #3E3B38. &nbsp;Markers: royal #2050F2 core in #A9BEF8 halo.</div>
+        </div>
+
+        <!-- dark panel -->
+        <div style="background:linear-gradient(180deg,#3E3B38 0%,#0E1117 100%);border-radius:12px;padding:30px;">
+          <div style="display:inline-flex;align-items:center;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:#fff;border:1px solid #fff;padding:6px 10px;margin-bottom:14px;white-space:nowrap;">Dark panel</div>
+          <div style="font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#E6E7EB;">Gradient #3E3B38 → #0E1117 (180deg) · white copy · white-bordered eyebrow pill. Used for the lead-capture / emphasis block.</div>
+        </div>
+
+        <!-- source links -->
+        <div style="background:#fff;border:1px solid #3E3B38;border-radius:12px;padding:26px 30px;">
+          <div style="font-family:var(--sans);font-weight:600;font-size:16px;margin-bottom:10px;">Source links</div>
+          <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.04em;color:#8D95AD;margin-bottom:14px;">Source: <a href="#" style="color:#8D95AD;text-decoration:underline;text-underline-offset:2px;" style-hover="color:#2050F2;">Full source name, 2026</a></div>
+          <div style="font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#596274;">Whole label underlined · #8D95AD · hover #2050F2 · Geist Mono 12px. Multiple sources = separate links, unlinked separator between.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1024,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      swatches: [
+        { name: 'Royal blue', hex: '#2050F2', use: 'Primary accent, CTAs, markers, numerals' },
+        { name: 'Ink', hex: '#3E3B38', use: 'Borders, eyebrow text, headers' },
+        { name: 'Heading navy', hex: '#0B1233', use: 'Headlines, high-contrast text' },
+        { name: 'Body', hex: '#596274', use: 'Paragraph / body copy' },
+        { name: 'Muted', hex: '#8D95AD', use: 'Sources, captions, secondary' },
+        { name: 'Powder blue', hex: '#8FA7F8', use: 'Page-gradient base, marker halo' },
+        { name: 'Cream', hex: '#F3F0EA', use: 'Cream card ground' },
+        { name: 'Cream border', hex: '#E3DDD1', use: 'Dividers on cream / inner bands' },
+        { name: 'Legacy', hex: '#FF5C28', use: 'Grade 1 accent' },
+        { name: 'Growing', hex: '#F5A623', use: 'Grade 2 accent' },
+        { name: 'Optimized', hex: '#1CA6B0', use: 'Grade 3 accent' },
+        { name: 'Modern', hex: '#14A75A', use: 'Grade 4 accent' },
+      ],
+      gradients: [
+        { name: 'Page background', css: 'linear-gradient(180deg,#FFFFFF 0%,#FFFFFF 8%,#8FA7F8 48%,#8FA7F8 66%,#FFFFFF 88%,#FFFFFF 100%)' },
+        { name: 'Primary button', css: 'linear-gradient(180deg,#8FA7F8 0%,#2050F2 100%)' },
+        { name: 'Dark panel', css: 'linear-gradient(180deg,#3E3B38 0%,#0E1117 100%)' },
+      ],
+      tiers: ['Legacy', 'Growing', 'Optimized', 'Modern'],
+    };
+  }
+}
+</script>
+</body>
+</html>
